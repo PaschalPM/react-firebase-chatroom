@@ -190,6 +190,7 @@
     background-color: white;
     border-left: none;
     padding: 5px;
+    transition: all var(--slow-speed) ease;
 }
 
 .message-form-button{
