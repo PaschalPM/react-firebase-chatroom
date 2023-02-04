@@ -184,9 +184,15 @@
     outline: none;
     border: 1px solid #ddd;
     border-right: none;
+    transition: all var(--avg-speed) ease;
 }
 .message-form input:focus{
-    border: 1px solid var(--prim-color);
+    border: 1.5px solid var(--prim-color);
+    border-right: none;
+}
+.message-form input:focus + button{
+    border: 1.5px solid var(--prim-color);
+    border-left: none;
 }
 .message-form button{
     border-radius: 0em .5em .5em 0em;
@@ -194,17 +200,22 @@
     background-color: white;
     border-left: none;
     padding: 5px;
-    transition: all var(--slow-speed) ease;
+    transition: all var(--avg-speed) ease;
 }
 
 .message-form-button{
     cursor: pointer;
 }
 
-.message-form-button:hover, .message-form-button:active{
+.message-form-button:hover{
+    background-color: var(--prim-color);
+}
+
+.message-form-button:active{
     transform: scale(.90);
     background-color: var(--prim-color);
 }
+
 .message-form-button:hover svg, .message-form-button:active svg{
     fill: white;
 }
