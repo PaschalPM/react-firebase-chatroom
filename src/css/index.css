@@ -128,16 +128,27 @@
     padding: 1rem;
     background-color: var(--prim-color);
     color: var(--white);
-    animation: dropdown var(--avg-speed);
     box-shadow: 1px 4px 10px #888;
 }
-@keyframes dropdown {
-    from {
-        opacity: 0%;
-    }
-    to{
-        opacity: 100%;
-    }
+
+.dropdown-menu-enter{
+    transform: translateY(-100px);
+    opacity: 0;
+}
+.dropdown-menu-enter-active{
+    transform: translateY(0px);
+    opacity: 1;
+    transition: all var(--fast-speed) ease;
+}
+
+.dropdown-menu-exit{
+    transform: translateY(0px);
+    opacity: 1;
+}
+.dropdown-menu-exit-active{
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: all var(--fast-speed) ease;
 }
 
 /* MAIN  */

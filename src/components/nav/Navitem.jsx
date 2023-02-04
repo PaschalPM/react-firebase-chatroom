@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useAppContext } from "../../context/AppState";
 
 function NavItem(props) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+ 
+  const {menuOpen, setMenuOpen} = useAppContext()
 
-    
   let nav_item_class = `button-icon`
   if (props.children){
-    nav_item_class = `button-icon menu-button ${isDropdownOpen && "active"}`
+    nav_item_class = `button-icon menu-button ${menuOpen && "active"}`
   }
 
   return (
@@ -16,13 +16,14 @@ function NavItem(props) {
         className={nav_item_class}
         onClick={(e) => {
           e.preventDefault();
-          setIsDropdownOpen(!isDropdownOpen);
+          if(props.children)
+            setMenuOpen((v)=>!v);
         }}
       >
         {props.icon}
       </a>
 
-      {isDropdownOpen && props.children}
+      {props.children}
     </li>
   );
 }
