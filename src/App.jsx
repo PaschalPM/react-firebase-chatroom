@@ -18,7 +18,7 @@ import { AppContextProvider } from "./context/AppState";
 
 const App = () => {
   
-  const testUser = { displayName: "PASCHAL", email: "okafor" };
+ const testUser = { displayName: "PASCHAL", email: "okafor" };
 	const [user, setUser] = useState(testUser);
 	// const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false)

@@ -1,10 +1,13 @@
 import Container from "../Container";
 import { IoMdSend } from "react-icons/io";
+import Modal from "../Modal";
 
 function Main(props) {
   return (
     <main className="main">
-      <div className="display"></div>
+      <div className="bg-blend-overlay -z-50 bg-yellow-400 flex justify-center items-center w-full display">
+        <Modal />
+      </div>
       <div className="switch-join-form">
         <Container>
           {props.user && (
