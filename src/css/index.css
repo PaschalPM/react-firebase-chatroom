@@ -10,6 +10,10 @@
 	--white:#ffffff;
 	--light-color:#f2f2f2;
 
+    --error-color:#f23c;
+    --success-color:rgba(5, 176, 76, 0.8);
+    --warning-color:rgba(198, 165, 67, 0.8);
+    
 	--nav-size:50px;
 
 	--fast-speed:300ms;
@@ -27,6 +31,7 @@
 	background-repeat: no-repeat;
 	background-color: var(--prim-color);
 	background-blend-mode: luminosity;
+    position: relative;
 }
 
 /* APP */
@@ -252,4 +257,29 @@
 
 .dropdown-item a .button-icon{
         margin-right:10px;
+}
+
+.status-bar{
+    position: absolute;
+    top:1em;
+    left:50%;
+    transform: translateX(-50%);
+    color: #dee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .35em;
+    padding: .25em .75em;
+    font-size: .75em;
+    font-weight: 600;
+    border-radius: .25em;
+}
+.status-bar.error{
+    background-color: var(--error-color);
+}
+.status-bar.success{
+    background-color: var(--success-color);
+}
+.status-bar.warning{
+    background-color: var(--warning-color);
 }
