@@ -1,11 +1,12 @@
 import Container from "../Container";
 import { IoMdSend } from "react-icons/io";
-import Modal from "../Modal";
+import Modal from "../LoginModal";
+import SignupModal from "../SignupModal"
 
 function Main(props) {
   return (
     <main className="main">
-      <div className="bg-blend-overlay -z-50 bg-yellow-400 flex justify-center items-center w-full display">
+      <div className="flex justify-center items-center w-full display">
         <Modal />
       </div>
       <div className="switch-join-form">

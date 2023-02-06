@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Container from "./components/Container";
 import Navbar from "./components/nav/Navbar";
 import NavTitle from "./components/nav/Navtitle";
@@ -17,10 +17,10 @@ import { SiGnuprivacyguard } from "react-icons/si";
 import { AppContextProvider } from "./context/AppState";
 
 const App = () => {
-  
- const testUser = { displayName: "PASCHAL", email: "okafor" };
-	const [user, setUser] = useState(testUser);
-	// const [user, setUser] = useState(null);
+
+  const testUser = { displayName: "PASCHAL", email: "okafor" };
+  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false)
 
   const states = {
