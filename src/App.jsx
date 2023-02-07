@@ -23,7 +23,7 @@ const App = () => {
 	const [user, setUser] = useState(testUser);
 	// const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false)
-  const [status, setStatus] = useState({message:"Post created", status:"warning"})
+  const [status, setStatus] = useState(null)
   // const [status, setStatus] = useState(null)
 
   const appStates = {

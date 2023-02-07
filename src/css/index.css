@@ -214,18 +214,14 @@
     cursor: pointer;
 }
 
-.message-form-button:hover{
-    background-color: var(--prim-color);
-}
-
 .message-form-button:active{
-    transform: scale(.90);
-    background-color: var(--prim-color);
+    transform: scale(.65);
 }
 
-.message-form-button:hover svg, .message-form-button:active svg{
-    fill: white;
+.message-form-button[disabled]:active{
+    transform: scale(1);
 }
+
 
 .message-join-button{
     width: 50%;
@@ -271,7 +267,7 @@
     justify-content: space-between;
     align-items: center;
     gap: .35em;
-    padding: .25em .75em;
+    padding: .25em .35em;
     font-size: .75em;
     font-weight: 600;
     border-radius: .25em;
