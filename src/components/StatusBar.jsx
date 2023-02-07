@@ -3,6 +3,7 @@ import {BsCheck} from "react-icons/bs"
 import {AiOutlineWarning} from "react-icons/ai"
 import { useAppContext } from "../context/AppState"
 import { useEffect } from "react"
+import {motion, AnimatePresence} from "framer-motion"
 
 function StatusBar(){
 	const {status, setStatus} = useAppContext()
@@ -22,13 +23,19 @@ function StatusBar(){
 			},3000)
 		}
 		}, [status, setStatus])
-	return (status && <div className={`status-bar ${__class}`}>
-		<span> {
+	return (
+		<AnimatePresence>
+		{status && <motion.div className={`status-bar ${__class}`}
+			exit={{opacity:0}}
+		>
+			<span > {
 				status.status === "success" ? <BsCheck size={20} color="#dee"/> 
 				: status.status === "error"? <MdErrorOutline size={20} color="#dee"/> 
-				: <AiOutlineWarning size={20} color="#dee"/>} </span>
-		<span> {status.message} </span>
-	</div>)
+				: <AiOutlineWarning size={20} color="#dee"/>} 
+			</span>
+			<span> {status.message} </span>
+		</motion.div>}
+		</AnimatePresence>)
 }
 
 export default StatusBar

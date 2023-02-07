@@ -12,7 +12,7 @@ import StatusBar from "./components/StatusBar";
 
 import { SiGooglemessages } from "react-icons/si";
 import { MdArrowDropDown } from "react-icons/md";
-import { FaUserTie } from "react-icons/fa";
+import { FaUserTie, FaReact } from "react-icons/fa";
 import { IoMdLogIn, IoMdLogOut } from "react-icons/io";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { AppContextProvider } from "./context/AppState";
@@ -31,6 +31,10 @@ const App = () => {
   }
 
   /** PROPS */
+  const navTitleProps = {
+    icon:<FaReact/>,
+    href:"#"
+  } 
   const containerProps = {
     display:"flex", justify:"space-between"
   }
@@ -60,7 +64,7 @@ const App = () => {
         <div className="app">
           <Navbar>
             <Container {...containerProps}>
-              <NavTitle href="#">Chatroom</NavTitle>
+              <NavTitle {...navTitleProps}>Chatroom</NavTitle>
               <NavbarNav>
                 <NavItem {...navItemIProps}/>
                 <NavItem {...navItemIIProps}>

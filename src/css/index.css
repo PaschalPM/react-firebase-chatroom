@@ -10,9 +10,9 @@
 	--white:#ffffff;
 	--light-color:#f2f2f2;
 
-    --error-color:#f23c;
-    --success-color:rgba(5, 176, 76, 0.8);
-    --warning-color:rgba(198, 165, 67, 0.8);
+    --error-color:rgba(184, 9, 24, 0.8);
+    --success-color:rgba(4, 135, 58, 0.8);
+    --warning-color:rgba(153, 117, 10, 0.8);
     
 	--nav-size:50px;
 
@@ -62,8 +62,10 @@
 	height: 100%;
 	display: flex;
 	align-items: center;
+    justify-content: space-between;
 	font-size: 1.5rem;
 	font-weight: 600;
+    gap:.15em;
 }
 
 .nav-item{
@@ -261,10 +263,10 @@
 
 .status-bar{
     position: absolute;
-    top:1em;
+    bottom:4em;
     left:50%;
     transform: translateX(-50%);
-    color: #dee;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
