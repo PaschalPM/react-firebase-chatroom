@@ -8,10 +8,11 @@ import FirstLetterCapital from "./components/FirstLetterCapital";
 import DropdownMenu from "./components/dropdown/DropdownMenu";
 import DropdownItem from "./components/dropdown/DropdownItem";
 import Main from "./components/main/Main";
+import StatusBar from "./components/StatusBar";
 
 import { SiGooglemessages } from "react-icons/si";
 import { MdArrowDropDown } from "react-icons/md";
-import { FaUserTie } from "react-icons/fa";
+import { FaUserTie, FaReact } from "react-icons/fa";
 import { IoMdLogIn, IoMdLogOut } from "react-icons/io";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { AppContextProvider } from "./context/AppState";
@@ -22,34 +23,54 @@ const App = () => {
   const [user, setUser] = useState(null);
   // const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false)
+  const [status, setStatus] = useState(null)
+  // const [status, setStatus] = useState(null)
 
-  const states = {
-    user, setUser, menuOpen, setMenuOpen
+  const appStates = {
+    user, setUser, menuOpen, setMenuOpen, status, setStatus
   }
-  const icon1 = user ? <FaUserTie /> : <IoMdLogIn />;
-  const text1 = user
-    ? `Hi ${FirstLetterCapital({ name: user.displayName })}`
-    : "Log in";
 
-  const icon2 = user ? <IoMdLogOut /> : <SiGnuprivacyguard />;
-  const text2 = user ? "Logout" : "Register";
-
+  /** PROPS */
+  const navTitleProps = {
+    icon:<FaReact/>,
+    href:"#"
+  } 
+  const containerProps = {
+    display:"flex", justify:"space-between"
+  }
+  const navItemIProps = {
+    icon:<SiGooglemessages color="white" />,
+    href:"#"
+  }
+  const navItemIIProps = {
+    icon:<MdArrowDropDown color="white" size="50px" />,
+    href:"#"
+  }
+  const dropdownItemIProps = {
+    icon: user ? <FaUserTie /> : <IoMdLogIn />, 
+    href: "#", 
+    text: user ? `Hi ${FirstLetterCapital({ name: user.displayName })}`
+              : "Log in"
+  }
+  const dropdownItemIIProps = {
+    icon: user ? <IoMdLogOut /> : <SiGnuprivacyguard />, 
+    href: "#", 
+    text: user ? "Logout" : "Register"
+  }
   return (
-    <AppContextProvider states={states}>
+    <AppContextProvider states={appStates}>
       <div className="wrapper">
+      <StatusBar />
         <div className="app">
           <Navbar>
-            <Container display="flex" justify="space-between">
-              <NavTitle href="#">Chatroom</NavTitle>
+            <Container {...containerProps}>
+              <NavTitle {...navTitleProps}>Chatroom</NavTitle>
               <NavbarNav>
-                <NavItem icon={<SiGooglemessages color="white" />} href="#" />
-                <NavItem
-                  icon={<MdArrowDropDown color="white" size="50px" />}
-                  href="#"
-                >
+                <NavItem {...navItemIProps}/>
+                <NavItem {...navItemIIProps}>
                   <DropdownMenu>
-                    <DropdownItem icon={icon1} href="#" text={text1} />
-                    <DropdownItem icon={icon2} href="#" text={text2} />
+                    <DropdownItem {...dropdownItemIProps} />
+                    <DropdownItem {...dropdownItemIIProps} />
                   </DropdownMenu>
                 </NavItem>
               </NavbarNav>
@@ -57,6 +78,7 @@ const App = () => {
           </Navbar>
           <Main user={user}></Main>
         </div>
+        
       </div>
     </AppContextProvider>
   );
