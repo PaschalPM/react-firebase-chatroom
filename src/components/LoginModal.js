@@ -1,6 +1,4 @@
 import React from 'react'
-import SignUp from './SignUp';
- import { Link } from "react-router-dom";
 
 
 const LoginModal = () => {
@@ -26,7 +24,6 @@ const LoginModal = () => {
                 <hr></hr>
                 <h1 className='mb-4 text-left'>Password</h1>
                 <hr className='mb-6'></hr>
-                {/* <Link to={"/SignUp"} className='bg-[#4e6862] text-white p-3 rounded-lg'>Don't have an account? sign up  </Link> */}
                 <a href='#' className='bg-[#4e6862] text-white p-2 rounded'>Don't have an account? sign up</a>
             </div>
             }
