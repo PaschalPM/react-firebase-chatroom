@@ -9,8 +9,8 @@ import DropdownMenu from "./components/dropdown/DropdownMenu";
 import DropdownItem from "./components/dropdown/DropdownItem";
 import Main from "./components/main/Main";
 import StatusBar from "./components/StatusBar";
-import LoginModal from "./components/LoginModal";
-import SignUp from "./components/SignUp";
+import LoginModal from "./components/modals/LoginModal";
+import SignUp from "./components/modals/SignUp";
 
 import { SiGooglemessages } from "react-icons/si";
 import { MdArrowDropDown } from "react-icons/md";
