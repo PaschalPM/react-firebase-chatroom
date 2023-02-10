@@ -9,6 +9,8 @@ import DropdownMenu from "./components/dropdown/DropdownMenu";
 import DropdownItem from "./components/dropdown/DropdownItem";
 import Main from "./components/main/Main";
 import StatusBar from "./components/StatusBar";
+import LoginModal from "./components/LoginModal";
+import SignUp from "./components/SignUp";
 
 import { SiGooglemessages } from "react-icons/si";
 import { MdArrowDropDown } from "react-icons/md";
@@ -59,6 +61,8 @@ const App = () => {
   }
   return (
     <AppContextProvider states={appStates}>
+      <LoginModal />
+        <SignUp />
       <div className="wrapper">
       <StatusBar />
         <div className="app">

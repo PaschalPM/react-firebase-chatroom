@@ -1,33 +1,33 @@
 import React from 'react'
-
+import { FaReact } from "react-icons/fa";
+import ModalBox from './ModalBox';
 
 const LoginModal = () => {
-    const [openModal, setOpenModal] = React.useState(false)
+    const [openModal, setOpenModal] = React.useState(true)
     //const [handleModal, setHandleModal] = React.useState(true)
-    function closeModal() {
-        setOpenModal(openModal => !openModal)
-    }
-    function handleModal() {
-        setOpenModal(!openModal)
-    }
-
 
     return (
-        <div>
-            {!openModal ? <button className='bg-slate-600 text-white m-3 px-2' onClick={handleModal}>sign in</button> : ""}
-            {openModal && <div className="w-full rounded-lg p-4  bg-blend-overlay  bg-slate-300">
-                <div className='flex justify-between w-[300px]'>
-                    <h1 className='text-xl'>Welcome back!</h1>
-                    <button onClick={closeModal} className='bg-[#4e6862] text-white rounded px-2'>x</button>
+        <>
+            {openModal && <ModalBox><form className="rounded-lg p-4  bg-blend-overlay  bg-slate-300">
+                <div className='flex flex-col items-center w-[300px] my-4 '>
+                    <FaReact size={50}/>
+                    <h1 className='text-xl  mx-auto font-semibold mt-2'>Welcome back!</h1>
                 </div>
-                <h1 className='mb-4 text-left'>Email</h1>
-                <hr></hr>
-                <h1 className='mb-4 text-left'>Password</h1>
-                <hr className='mb-6'></hr>
-                <a href='#' className='bg-[#4e6862] text-white p-2 rounded'>Don't have an account? sign up</a>
-            </div>
+                <div className='my-6'>
+                    <input name="email" type="email" placeholder='Email' className='bg-transparent w-full border-b-2 px-2 placeholder:text-center'/>
+                </div>
+                <div className='my-6'>
+                    <input name="password" placeholder='Password' type="password" className='bg-transparent w-full border-b-2 px-2 placeholder:text-center'/>
+                </div>
+                <div className='flex justify-center my-6'>
+                    <button className='bg-[#4e6862] text-white py-1 px-4 rounded'>
+                        log in
+                    </button>
+                </div>
+                <p className='text-[#4e6862] p-2 text-center'>Don't have an account? <a href="#" className="underline font-semibold cursor-pointer "> register</a></p>
+            </form></ModalBox>
             }
-        </div>
+            </>
     )
 }
 

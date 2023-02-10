@@ -2,8 +2,6 @@ import {useEffect, useState} from "react"
 import { useAppContext } from "../../context/AppState";
 import Container from "../Container";
 import { IoMdSend } from "react-icons/io";
-import LoginModal from "../LoginModal";
- import SignUp from '../SignUp'
 
 function Main(props) {
 
@@ -33,8 +31,7 @@ function Main(props) {
   return (
     <main className="main">
       <div className="flex justify-center items-center w-full display">
-        <LoginModal />
-        <SignUp />
+        
       </div>
       <div className="switch-join-form">
         <Container>

@@ -1,33 +1,39 @@
 import React from 'react'
-
+import { FaReact } from 'react-icons/fa'
+import ModalBox from './ModalBox'
 
 const SignUp = () => {
     const [createAccountModal, setCreateAccountModal] = React.useState(false)
-    function closeModal() {
-        setCreateAccountModal(createAccountModal => !createAccountModal)
-    }
-    function handleModal() {
-        setCreateAccountModal(!createAccountModal)
-    }
-
+    
     return (
         <div>
-            {!createAccountModal ? <button className='bg-slate-600 text-white px-2' onClick={handleModal}>sign up</button> : ""}
-            {createAccountModal && <div className="w-full rounded-lg p-4  bg-blend-overlay  bg-slate-300">
-                <div className='md:flex justify-between  pb-2 w-[300px]'>
-                    <p className='text-2xl'>Sign up</p>
-                    <button onClick={closeModal} className='bg-[#4e6862] text-white rounded px-2'>x</button>
+            
+            {createAccountModal && <ModalBox> <form className=" rounded-lg p-4  bg-blend-overlay  bg-slate-300">
+            <div className='flex flex-col items-center w-[300px] my-4 '>
+                    <FaReact size={50}/>
+                    <h1 className='text-2xl  mx-auto font-semibold mt-2'>Sign Up!</h1>
                 </div>
 
-                
-                <h1 className='mb-4 text-left'>Your name</h1>
-                <hr></hr>
-                <h1 className='mb-4 text-left'>Your email</h1>
-                <hr></hr>
-                <h1 className='mb-4 text-left'>Your password</h1>
-                <hr className='mb-6'></hr>
-               
-            </div>
+                <div className='my-4 mt-6'>
+                    <input name="display_name" placeholder='Display Name' className='bg-transparent w-full border-b-2 px-2 placeholder:text-center'/>
+                </div>
+                <div className='my-4'>
+                    <input name="email" type="email" placeholder='Email' className='bg-transparent w-full border-b-2 px-2 placeholder:text-center'/>
+                </div>
+                <div className='my-4'>
+                    <input name="password" placeholder='Password' type="password" className='bg-transparent w-full border-b-2 px-2 placeholder:text-center'/>
+                </div>
+                <div className='my-4'>
+                    <input name="confirm_password" placeholder='Confirm Password' type="password" className='bg-transparent w-full border-b-2 px-2 placeholder:text-center'/>
+                </div>
+                <div className='flex justify-center my-4'>
+                    <button className='bg-[#4e6862] text-white py-1 px-4 rounded'>
+                        sign up
+                    </button>
+                </div>
+                <p className='text-[#4e6862] p-2 text-center'>Already have an account? <a href="#" className="underline font-semibold cursor-pointer "> sign in</a></p>
+            </form>
+            </ModalBox>
             }
         </div>
     )
