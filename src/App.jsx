@@ -22,14 +22,20 @@ import { AppContextProvider } from "./context/AppState";
 const App = () => {
 
   const testUser = { displayName: "PASCHAL", email: "okafor" };
-  const [user, setUser] = useState(testUser);
-  // const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(testUser);
+  const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false)
   const [status, setStatus] = useState(null)
   // const [status, setStatus] = useState(null)
 
+  const [openLogin, setOpenLogin] = useState(false)
+  const [openSignup, setOpenSignup] = useState(false)
+
+  const [openModalBox, setOpenModalBox] = useState(false)
+
   const appStates = {
-    user, setUser, menuOpen, setMenuOpen, status, setStatus
+    user, setUser, menuOpen, setMenuOpen, status, setStatus,
+    openLogin, setOpenLogin, openSignup, setOpenSignup, openModalBox, setOpenModalBox
   }
 
   /** PROPS */
@@ -52,12 +58,26 @@ const App = () => {
     icon: user ? <FaUserTie /> : <IoMdLogIn />, 
     href: "#", 
     text: user ? `Hi ${FirstLetterCapital({ name: user.displayName })}`
-              : "Log in"
+              : "Log in",
+    cb(){
+      if (!user){
+        setOpenModalBox(true)
+        setOpenLogin(true)
+        setMenuOpen(false)
+      }
+    }
   }
   const dropdownItemIIProps = {
     icon: user ? <IoMdLogOut /> : <SiGnuprivacyguard />, 
     href: "#", 
-    text: user ? "Logout" : "Register"
+    text: user ? "Logout" : "Register",
+    cb(){
+      if (!user){
+        setOpenModalBox(true)
+        setOpenSignup(true)
+        setMenuOpen(false)
+      }
+    }
   }
   return (
     <AppContextProvider states={appStates}>

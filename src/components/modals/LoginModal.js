@@ -1,14 +1,18 @@
 import React from 'react'
 import { FaReact } from "react-icons/fa";
 import ModalBox from './ModalBox';
+import { useAppContext } from '../../context/AppState';
 
 const LoginModal = () => {
-    const [openModal, setOpenModal] = React.useState(true)
-    //const [handleModal, setHandleModal] = React.useState(true)
+    const {openLogin, setOpenLogin, setOpenModalBox} = useAppContext()
 
+    const closeModal = ()=>{
+        setOpenModalBox(false)
+        setOpenLogin(false)
+    }
     return (
         <>
-            {openModal && <ModalBox><form className="rounded-lg p-4  bg-blend-overlay  bg-slate-300">
+            {openLogin && <ModalBox handleClick={closeModal}><form className="rounded-lg p-4  bg-blend-overlay  bg-slate-300">
                 <div className='flex flex-col items-center w-[300px] my-4 '>
                     <FaReact size={50}/>
                     <h1 className='text-xl  mx-auto font-semibold mt-2'>Welcome back!</h1>
