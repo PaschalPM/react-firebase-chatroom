@@ -23,7 +23,7 @@ const ModalBox = (props) => {
 	}
   }
   return (openModalBox && <motion.div variants={variants} initial="hidden" animate="visible" onClick={(e)=>handleClick(e)} className="modal-box bg-[#001829c5] w-full h-screen fixed top-0 bottom-0 z-10 flex justify-center items-center">
-		<motion.div initial={{y:"100vh"}} animate={{y:0, transition:{type:"spring", stiffness:120}}}>{props.children}</motion.div>
+		<motion.div className='w-[315px]' initial={{y:"100vh"}} animate={{y:0, transition:{type:"spring", stiffness:120}}}>{props.children}</motion.div>
 	</motion.div>
   )
 }

@@ -1,7 +1,7 @@
 import { MdErrorOutline } from "react-icons/md"
 import {BsCheck} from "react-icons/bs"
 import {AiOutlineWarning} from "react-icons/ai"
-import { useAppContext } from "../context/AppState"
+import { useAppContext } from "../../context/AppState"
 import { useEffect } from "react"
 import {motion, AnimatePresence} from "framer-motion"
 
