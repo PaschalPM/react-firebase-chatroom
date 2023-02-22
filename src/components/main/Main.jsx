@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react"
 import { useAppContext } from "../../context/AppState";
-import Container from "../Container";
+import Container from "../utils/Container";
 import { IoMdSend } from "react-icons/io";
 
 function Main(props) {

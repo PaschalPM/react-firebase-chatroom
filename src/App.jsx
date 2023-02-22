@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import Container from "./components/Container";
+import Container from "./components/utils/Container";
 import Navbar from "./components/nav/Navbar";
 import NavTitle from "./components/nav/Navtitle";
 import NavbarNav from "./components/nav/NavbarNav";
 import NavItem from "./components/nav/Navitem";
-import FirstLetterCapital from "./components/FirstLetterCapital";
+import FirstLetterCapital from "./components/utils/FirstLetterCapital";
 import DropdownMenu from "./components/dropdown/DropdownMenu";
 import DropdownItem from "./components/dropdown/DropdownItem";
 import Main from "./components/main/Main";
-import StatusBar from "./components/StatusBar";
+import StatusBar from "./components/utils/StatusBar";
 import LoginModal from "./components/modals/LoginModal";
 import SignUp from "./components/modals/SignUp";
 
