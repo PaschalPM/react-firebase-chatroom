@@ -26,7 +26,6 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false)
   const [status, setStatus] = useState(null)
-  // const [status, setStatus] = useState(null)
 
   const [openLogin, setOpenLogin] = useState(false)
   const [openSignup, setOpenSignup] = useState(false)
