@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Container from "./components/utils/Container";
 import Navbar from "./components/nav/Navbar";
 import NavTitle from "./components/nav/Navtitle";
@@ -78,6 +78,9 @@ const App = () => {
       }
     }
   }
+
+  const mainFormRef = useRef(null)
+
   return (
     <AppContextProvider states={appStates}>
       <LoginModal />
@@ -89,7 +92,7 @@ const App = () => {
             <Container {...containerProps}>
               <NavTitle {...navTitleProps}>Chatroom</NavTitle>
               <NavbarNav>
-                <NavItem {...navItemIProps}/>
+                <NavItem {...navItemIProps} mainFormRef={mainFormRef} />
                 <NavItem {...navItemIIProps}>
                   <DropdownMenu>
                     <DropdownItem {...dropdownItemIProps} />
@@ -99,7 +102,7 @@ const App = () => {
               </NavbarNav>
             </Container>
           </Navbar>
-          <Main user={user}></Main>
+          <Main ref={mainFormRef}></Main>
         </div>
         
       </div>

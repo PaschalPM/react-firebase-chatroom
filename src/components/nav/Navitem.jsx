@@ -2,7 +2,15 @@ import { useAppContext } from "../../context/AppState";
 
 function NavItem(props) {
  
-  const {menuOpen, setMenuOpen} = useAppContext()
+  const {
+          menuOpen, 
+          setMenuOpen, 
+          setOpenLogin,
+          setOpenModalBox
+        } = useAppContext()
+        
+  const mainForm = props.mainFormRef?.current
+  const mainFormMessage = mainForm?.message
 
   let nav_item_class = `button-icon`
   if (props.children){
@@ -18,6 +26,16 @@ function NavItem(props) {
           e.preventDefault();
           if(props.children)
             setMenuOpen((v)=>!v);
+  
+            if (mainFormMessage){
+                mainFormMessage.focus()
+                setMenuOpen(false)
+            }
+            else if(mainForm === null){
+                setOpenModalBox(true)
+                setOpenLogin(true)
+                setMenuOpen(false)
+            }
         }}
       >
         {props.icon}
