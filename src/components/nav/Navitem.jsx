@@ -6,7 +6,8 @@ function NavItem(props) {
           menuOpen, 
           setMenuOpen, 
           setOpenLogin,
-          setOpenModalBox
+          setOpenModalBox,
+          user
         } = useAppContext()
         
   const mainForm = props.mainFormRef?.current
@@ -26,16 +27,12 @@ function NavItem(props) {
           e.preventDefault();
           if(props.children)
             setMenuOpen((v)=>!v);
-  
-            if (mainFormMessage){
-                mainFormMessage.focus()
-                setMenuOpen(false)
-            }
-            else if(mainForm === null){
-                setOpenModalBox(true)
-                setOpenLogin(true)
-                setMenuOpen(false)
-            }
+            
+          if(mainForm === null && user === null){
+            setOpenModalBox(true)
+            setOpenLogin(true)
+            setMenuOpen(false)
+        }
         }}
       >
         {props.icon}
