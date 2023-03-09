@@ -18,11 +18,10 @@ import { FaUserTie, FaReact } from "react-icons/fa";
 import { IoMdLogIn, IoMdLogOut } from "react-icons/io";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { AppContextProvider } from "./context/AppState";
+import {auth} from "./firebase-config"
+import {signOut} from "firebase/auth"
 
 const App = () => {
-
-  const testUser = { displayName: "PASCHAL", email: "okafor" };
-  // const [user, setUser] = useState(testUser);
   const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false)
   const [status, setStatus] = useState(null)
@@ -45,14 +44,20 @@ const App = () => {
   const containerProps = {
     display:"flex", justify:"space-between"
   }
+  
+  // message nav button
   const navItemIProps = {
     icon:<SiGooglemessages color="white" />,
     href:"#"
   }
+
+  // dropdown nav button
   const navItemIIProps = {
     icon:<MdArrowDropDown color="white" size="50px" />,
     href:"#"
   }
+
+  //Login and display name dropdowm button
   const dropdownItemIProps = {
     icon: user ? <FaUserTie /> : <IoMdLogIn />, 
     href: "#", 
@@ -66,16 +71,28 @@ const App = () => {
       }
     }
   }
+  // Register and logout dropdown button
   const dropdownItemIIProps = {
     icon: user ? <IoMdLogOut /> : <SiGnuprivacyguard />, 
     href: "#", 
     text: user ? "Logout" : "Register",
     cb(){
+      
       if (!user){
-        setOpenModalBox(true)
-        setOpenSignup(true)
-        setMenuOpen(false)
+        // Register Button
+            setOpenModalBox(true)
+            setOpenSignup(true)
+            setMenuOpen(false)
+      } else {
+        // Logout Button
+            signOut(auth)
+            .then((auth)=>{
+              setUser(null)
+              setMenuOpen(false)
+              setStatus({message:"Logged out!", status:"success"})
+            })
       }
+      
     }
   }
 

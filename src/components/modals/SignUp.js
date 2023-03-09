@@ -5,6 +5,9 @@ import { Formik, Form, Field } from 'formik'
 import ErrorDiv from '../utils/ErrorDiv'
 import * as Yup from "yup"
 import FormButton from '../utils/FormButton'
+import {auth} from "../../firebase-config"
+import {createUserWithEmailAndPassword, updateProfile} from "firebase/auth"
+import FirstLetterCapital from "../utils/FirstLetterCapital"
 
 const SignUp = () => {
     const {
@@ -12,7 +15,8 @@ const SignUp = () => {
         setOpenSignup, 
         setOpenModalBox, 
         setOpenLogin,
-        setStatus
+        setStatus,
+        setUser
     } = useAppContext()
 
     const signInHandle = ()=>{
@@ -40,19 +44,35 @@ const SignUp = () => {
         }),
 
         onSubmit:(values, helper)=>{
-            setTimeout(()=>{
-                console.log(values)
-                helper.resetForm()
-                setOpenSignup(false)
-                setStatus({message:"Logged in!", status:"success"})
-            }, 3000)
-            
+            async function exec(){
+                
+                try {
+                    let {user} = await createUserWithEmailAndPassword(auth, values.email, values.password)
+
+                    await updateProfile(user, 
+                        {displayName:FirstLetterCapital({name:values.display_name})})
+
+                    helper.resetForm()
+                    setOpenSignup(false)
+                    setStatus({message:"Logged in!", status:"success"})
+                    let authUser = {
+                        displayName : user.displayName,
+                        email : user.email,
+                        uid : user.uid
+                    }
+                    setUser(authUser)
+                } catch(e){
+                    
+                    setStatus({message:"Email already exists", status:"error"})
+                    helper.setSubmitting(false)
+                }
+            }
+            exec()          
         }
     }
-
+   
     return (
         <div>
-            
             {openSignup && <ModalBox handleClick={closeModal}> 
                 <Formik  {...formikProps}>
                     {(formik)=>(

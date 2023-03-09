@@ -25,9 +25,12 @@ function NavItem(props) {
         className={nav_item_class}
         onClick={(e) => {
           e.preventDefault();
+          
+          // Dropdown Button
           if(props.children)
             setMenuOpen((v)=>!v);
             
+          // Message Button
           if(mainForm === null && user === null){
             setOpenModalBox(true)
             setOpenLogin(true)
