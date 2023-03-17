@@ -3,12 +3,12 @@ import {getFirestore, collection} from "firebase/firestore"
 import {getAuth} from "firebase/auth"
 
 const firebaseConfig = {
-	apiKey: "AIzaSyD7caSfwDpQJ_wvxZsfHctjvOt7OiBGzFw",
-	authDomain: "fir-react-chatroom-3f1ce.firebaseapp.com",
-	projectId: "fir-react-chatroom-3f1ce",
-	storageBucket: "fir-react-chatroom-3f1ce.appspot.com",
-	messagingSenderId: "823782518019",
-	appId: "1:823782518019:web:fe79c3dbe2d5ef83b78d36"
+	apiKey: "AIzaSyAewXtr5QKzkIwVLIn1Y4S1IJqYfyzVqU4",
+	authDomain: "fir-react-chatroom-e5e59.firebaseapp.com",
+	projectId: "fir-react-chatroom-e5e59",
+	storageBucket: "fir-react-chatroom-e5e59.appspot.com",
+	messagingSenderId: "808004944224",
+	appId: "1:808004944224:web:7eaddf48ba1b8c776c1e05"
   };
   
   // Initialize Firebase

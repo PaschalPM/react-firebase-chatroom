@@ -8,12 +8,12 @@ import FormButton from '../utils/FormButton'
 import {auth} from "../../firebase-config"
 import {createUserWithEmailAndPassword, updateProfile} from "firebase/auth"
 import FirstLetterCapital from "../utils/FirstLetterCapital"
+import CloseModal from './CloseModal'
 
 const SignUp = () => {
     const {
         openSignup, 
         setOpenSignup, 
-        setOpenModalBox, 
         setOpenLogin,
         setStatus,
         setUser
@@ -22,11 +22,6 @@ const SignUp = () => {
     const signInHandle = ()=>{
         setOpenSignup(false)
         setOpenLogin(true)
-    }
-
-    const closeModal = ()=>{
-        setOpenModalBox(false)
-        setOpenSignup(false)
     }
     
     const formikProps = {
@@ -54,13 +49,13 @@ const SignUp = () => {
 
                     helper.resetForm()
                     setOpenSignup(false)
-                    setStatus({message:"Logged in!", status:"success"})
                     let authUser = {
                         displayName : user.displayName,
                         email : user.email,
                         uid : user.uid
                     }
                     setUser(authUser)
+                    setStatus({message:"Logged in!", status:"success"})
                 } catch(e){
                     
                     setStatus({message:"Email already exists", status:"error"})
@@ -73,10 +68,11 @@ const SignUp = () => {
    
     return (
         <div>
-            {openSignup && <ModalBox handleClick={closeModal}> 
+            {openSignup && <ModalBox> 
                 <Formik  {...formikProps}>
                     {(formik)=>(
-                        <Form className=" rounded-lg p-4  bg-blend-overlay  bg-slate-300 m-0" onSubmit={formik.handleSubmit}>
+                        <Form className=" rounded-lg p-4  bg-blend-overlay  bg-slate-300 m-0 relative" onSubmit={formik.handleSubmit}>
+                            <CloseModal/>
                         <div className='flex flex-col items-center my-4 justify-center '>
                                 <FaReact size={50}/>
                                 <h1 className='text-2xl  mx-auto font-semibold mt-2'>Sign Up!</h1>

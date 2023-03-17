@@ -5,6 +5,7 @@ import { useAppContext } from '../../context/AppState';
 import {Formik, Form, Field} from "formik"
 import ErrorDiv from '../utils/ErrorDiv';
 import FormButton from "../utils/FormButton"
+import CloseModal from './CloseModal';
 
 import * as Yup from "yup"
 
@@ -15,12 +16,6 @@ const LoginModal = () => {
             setOpenModalBox,
             setOpenSignup
         } = useAppContext()
-
-
-    const closeModal = ()=>{
-        setOpenModalBox(false)
-        setOpenLogin(false)
-    }
 
     const registerHandle = ()=>{
         setOpenLogin(false)
@@ -45,9 +40,10 @@ const LoginModal = () => {
     }
     return (
         <>
-            {openLogin && <ModalBox handleClick={closeModal}>
+            {openLogin && <ModalBox>
                 <Formik {...formikProps}>
                     {(formik)=>(<Form className="rounded-lg p-4  bg-blend-overlay  bg-slate-300" onSubmit={formik.handleSubmit}>
+                        <CloseModal/>
                         <div className='flex flex-col items-center w-[300px] my-4 '>
                             <FaReact size={50}/>
                             <h1 className='text-xl  mx-auto font-semibold mt-2'>Welcome back!</h1>
